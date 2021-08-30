@@ -1,0 +1,54 @@
+{% extends 'common/admin-base.html'%}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block body %}
+
+<div class="wrapper">
+  <form class="login form-signin"  method="POST" action="/accounts/login/">
+    {{ form.errors }}
+    <div class="form-error">
+  
+    </div>
+  
+    {% csrf_token %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{redirect_field_value}}">
+      <div class="d-flex justify-content-center">
+      <img src="{% static 'assets/images/menu-logo.png' %}" alt="logo" style="width: 80px;">
+      </div>
+     <h3 class="form-signin-heading text-center">Login</h3> 
+     <input class="form-control mb-2" type="text" name="login" placeholder="Username"
+     autocomplete="username" maxlength="150" required="" id="id_login">
+     <input class="form-control" type="password" name="password" placeholder="Password"
+     autocomplete="current-password" required="" id="id_password">    
+     <label class="checkbox">
+      <input type="checkbox" name="remember" id="id_remember"> Remember me
+     </label>
+     <button class="btn btn-lg btn-primary btn-block" type="submit" style="background: #60a6a2;border: #60a6a2;">Login</button>   
+  </form>
+</div>
+
+<!-- <form class="login">
+
+
+  <p><label for="id_login">Username:</label></p>
+  <p><label for="id_password">Password:</label> </p>
+  <p><label for="id_remember">Remember Me:</label> <input type="checkbox" name="remember" id="id_remember"></p>
+
+  <a class="button secondaryAction" href="/accounts/password/reset/">Forgot Password?</a>
+  <button class="primaryAction" type="submit">Sign In</button>
+</form> -->
+
+{% endblock body %}
+
+
+{% block script %}
+  <script>
+    var list_in_errors = $('.form-signin>ul>li>ul>li')
+    var error_html = ''
+    for(var i=0;i<list_in_errors.length;i++){
+      error_html+= `<div class="alert alert-danger p-1">${$(list_in_errors[i]).text()}</div>`
+    }
+    $('.form-error').html(error_html)
+  </script>
+{% endblock %}
