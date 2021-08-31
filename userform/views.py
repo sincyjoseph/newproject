@@ -1,3 +1,4 @@
+from django.http import response
 from django.http.response import HttpResponse, HttpResponseServerError
 from django.shortcuts import render
 from userform.models import UserDetails
@@ -41,6 +42,7 @@ def Usersubmit(request):
             print(request.POST.dict())
             for key, value in request.FILES.items():
                  file = request.FILES[key]
+                 
             userdata_to_db = UserDetails()
             userdata_to_db.fname = fname
             userdata_to_db.lname = lname
@@ -159,3 +161,4 @@ def media_access(request, path=None):
     else:
         return HttpResponseForbidden('Not authorized to access this media.')
 
+        

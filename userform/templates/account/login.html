@@ -13,9 +13,6 @@
   
     {% csrf_token %}
       <input type="hidden" name="{{ redirect_field_name }}" value="{{redirect_field_value}}">
-      <div class="d-flex justify-content-center">
-      <img src="{% static 'assets/images/menu-logo.png' %}" alt="logo" style="width: 80px;">
-      </div>
      <h3 class="form-signin-heading text-center">Login</h3> 
      <input class="form-control mb-2" type="text" name="login" placeholder="Username"
      autocomplete="username" maxlength="150" required="" id="id_login">
