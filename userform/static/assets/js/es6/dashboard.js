@@ -229,8 +229,6 @@ $(document).ready(function () {
                 type: "POST",
                 url: "/api/v1/userlist/",
                 data: {
-                    county_name: this.county_name,
-                    site_name: this.site_name,
                     date_start: this.start_date,
                     date_end: this.end_date,
                     export: true,
